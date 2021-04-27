@@ -12,6 +12,24 @@ export const SETTINGS_COLLECTION = {
             value: '/dashboard'
           },
           {
+            icon: 'input',
+            label: 'LAYOUT.FIELDS',
+            type: 'link',
+            value: '/m/fields/overview'
+          },
+          {
+            icon: 'book',
+            label: 'LAYOUT.INTERFACES',
+            type: 'link',
+            value: '/m/interfaces/overview'
+          },
+          {
+            icon: 'description',
+            label: 'LAYOUT.WIKI',
+            type: 'link',
+            value: '/m/wiki/overview'
+          },
+          {
             children: [
               {
                 icon: 'supervised_user_circle',
