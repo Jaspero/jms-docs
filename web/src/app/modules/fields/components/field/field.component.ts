@@ -1,13 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilderComponent, FormBuilderData } from '@jaspero/form-builder';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import { map, pluck, switchMap, tap } from 'rxjs/operators';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilderComponent, FormBuilderData} from '@jaspero/form-builder';
+import {BehaviorSubject, combineLatest, Observable, of} from 'rxjs';
+import {map, pluck, switchMap, tap} from 'rxjs/operators';
 import Academy from '@jaspero/academy';
-
-console.log({Academy});
 
 interface FieldData {
   id: string;
@@ -28,14 +26,12 @@ interface InterfaceData {
   styleUrls: ['./field.component.scss']
 })
 export class FieldComponent implements OnInit {
-
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     private snack: MatSnackBar,
     private router: Router
-  ) {
-  }
+  ) {}
 
   academy: Academy;
   field$: Observable<FieldData>;
@@ -49,85 +45,100 @@ export class FieldComponent implements OnInit {
     this.field$ = this.route.params.pipe(
       pluck('id'),
       switchMap(id => {
-        return this.afs.doc<FieldData>(`fields/${id}/metadata/data`).get().pipe(
-          map((snap) => {
-            if (!snap.exists) {
-              this.router.navigate(['/fields']);
-            }
+        return this.afs
+          .doc<FieldData>(`fields/${id}/metadata/data`)
+          .get()
+          .pipe(
+            map(snap => {
+              if (!snap.exists) {
+                this.router.navigate(['/fields']);
+              }
 
-            return {
-              id,
-              ...snap.data()
-            };
-          }),
-          switchMap((field) => {
-            return this.afs.doc<InterfaceData>(`interfaces/${field.interface}`).get().pipe(
-              map(snap => {
-                return {
-                  ...field,
-                  interface: snap.data()?.code || ''
-                };
-              }),
-              switchMap((field) => {
-                return combineLatest([of(field), this.update$]).pipe(
-                  map(([field]) => {
-                    const search = 'const data: FormBuilderData = ';
-                    const value = (this.academy?.editor?.value || field.template) || `{}`;
-
-                    const code = value.slice(value.indexOf(search) + search.length);
-
-                    let data: Partial<FormBuilderData & { layout: any }> = {
-                      value: {},
-                      schema: {},
-                      layout: {},
-                      definitions: {}
-                    };
-
-                    try {
-                      const compile = Function(`return ${code}`);
-
-                      data = {
-                        ...data,
-                        ...compile()
-                      };
-
-                      if (data?.layout?.instance?.segments) {
-                        data.segments = data.layout.instance.segments;
-                      }
-                    } catch (error) {
-                      console.log({error});
-                      this.snack.open(error.message || 'Invalid Schema Provided!', 'Dismiss', {
-                        duration: 3000
-                      });
-                    }
-
-                    const validate = this.formBuilder?.validate(data as FormBuilderData);
-
-                    if (validate?.error) {
-                      this.snack.open(validate.message, 'Dismiss', {
-                        duration: 3000
-                      });
-                    }
-
+              return {
+                id,
+                ...snap.data()
+              };
+            }),
+            switchMap(field => {
+              return this.afs
+                .doc<InterfaceData>(`interfaces/${field.interface}`)
+                .get()
+                .pipe(
+                  map(snap => {
                     return {
                       ...field,
-                      fb: (validate && validate.error) ?
-                        {
-                          schema: {},
-                          value: {}
-                        } : data as FormBuilderData
+                      interface: snap.data()?.code || ''
                     };
+                  }),
+                  switchMap(field => {
+                    return combineLatest([of(field), this.update$]).pipe(
+                      map(([field]) => {
+                        const search = 'const data: FormBuilderData = ';
+                        const value =
+                          this.academy?.editor?.value || field.template || `{}`;
+
+                        const code = value.slice(
+                          value.indexOf(search) + search.length
+                        );
+
+                        let data: Partial<FormBuilderData & {layout: any}> = {
+                          value: {},
+                          schema: {},
+                          layout: {},
+                          definitions: {}
+                        };
+
+                        try {
+                          const compile = Function(`return ${code}`);
+
+                          data = {
+                            ...data,
+                            ...compile()
+                          };
+
+                          if (data?.layout?.instance?.segments) {
+                            data.segments = data.layout.instance.segments;
+                          }
+                        } catch (error) {
+                          console.log({error});
+                          this.snack.open(
+                            error.message || 'Invalid Schema Provided!',
+                            'Dismiss',
+                            {
+                              duration: 3000
+                            }
+                          );
+                        }
+
+                        const validate = this.formBuilder?.validate(
+                          data as FormBuilderData
+                        );
+
+                        if (validate?.error) {
+                          this.snack.open(validate.message, 'Dismiss', {
+                            duration: 3000
+                          });
+                        }
+
+                        return {
+                          ...field,
+                          fb:
+                            validate && validate.error
+                              ? {
+                                  schema: {},
+                                  value: {}
+                                }
+                              : (data as FormBuilderData)
+                        };
+                      })
+                    );
                   })
                 );
-              })
-            );
-          })
-        );
+            })
+          );
       }),
       tap(field => {
-
         setTimeout(() => {
-
           if (!this.academy) {
             this.academy = new Academy({
               mount: [

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {map, pluck, switchMap} from 'rxjs/operators';
 // @ts-ignore
 import md from 'markdown-it';
 // const hljs = require('highlight.js');
@@ -34,11 +34,7 @@ interface Wiki {
   styleUrls: ['./wiki.component.scss']
 })
 export class WikiComponent implements OnInit {
-
-  constructor(
-    private route: ActivatedRoute,
-    private afs: AngularFirestore
-  ) { }
+  constructor(private route: ActivatedRoute, private afs: AngularFirestore) {}
 
   wiki$: Observable<Wiki>;
 
@@ -46,23 +42,25 @@ export class WikiComponent implements OnInit {
     this.wiki$ = this.route.params.pipe(
       pluck('id'),
       switchMap(id => {
-        return this.afs.doc<Wiki>(`wiki/${id}`).get().pipe(
-          map((snap) => {
-            return {
-              id,
-              ...snap.data()
-            };
-          })
-        );
+        return this.afs
+          .doc<Wiki>(`wiki/${id}`)
+          .get()
+          .pipe(
+            map(snap => {
+              return {
+                id,
+                ...snap.data()
+              };
+            })
+          );
       }),
       map((wiki: Wiki) => {
-        console.log({wiki});
         return {
           ...wiki,
           content: md({
             html: true,
             breaks: true,
-            typographer: true,
+            typographer: true
             // highlight: function (str: any, lang: string) {
             //   if (lang && hljs.getLanguage(lang)) {
             //     try {
@@ -82,10 +80,9 @@ export class WikiComponent implements OnInit {
             .use(markdownitsub)
             .use(markdownitmark)
             .use(markdownitins)
-            .render(wiki.content)
+            .render(wiki.content || '')
         };
       })
     );
   }
-
 }
