@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MonacoEditorModule} from '@jaspero/fb-monaco-editor';
 import {
   CUSTOM_COMPONENTS,
   DbService as FDbService,
@@ -25,6 +26,7 @@ export function roleFactory(state: StateService) {
   imports: [
     CommonModule,
     FormBuilderModule.forRoot(),
+    MonacoEditorModule,
 
     /**
      * Custom fields and component dependencies

@@ -41,6 +41,11 @@
                 "glob": "**/*",
                 "input": "node_modules/tinymce/skins/content/default",
                 "output": "/skins/content/default"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-monaco-editor/assets/monaco",
+                "output": "./assets/monaco/"
               }
             ],
             "styles": [
