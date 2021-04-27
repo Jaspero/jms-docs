@@ -85,7 +85,10 @@
     "LOG_OUT": "Log out",
     "MANAGEMENT": "Management",
     "SYSTEM": "System",
-    "RESET_PASSWORD": "Please reset your password"
+    "RESET_PASSWORD": "Please reset your password",
+    "FIELDS": "Fields",
+    "INTERFACES": "Interfaces",
+    "WIKI": "Wiki"
   },
   "MODULES": {
     "ADD_MODULE": "Add module",
