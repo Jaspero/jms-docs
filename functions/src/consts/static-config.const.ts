@@ -9,5 +9,5 @@ export const STATIC_CONFIG: {
   url: string;
 } = {
   cloudRegion: 'us-central1',
-  url: 'https://jaspero-jms.web.app/'
+  url: 'https://jms-docs.web.app/'
 };

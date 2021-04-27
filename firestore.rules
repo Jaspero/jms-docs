@@ -29,6 +29,31 @@ service cloud.firestore {
       allow write: if admin();
     }
 
+    match /settings/docs-layout {
+      allow read: if true;
+      allow write: if authenticated();
+    }
+
+    match /fields/{field=**} {
+      allow read: if true;
+      allow write: if authenticated();
+    }
+
+    match /fields/{field}/metadata/{doc} {
+      allow read: if true;
+      allow write: if authenticated();
+    }
+
+    match /interfaces/{interface=**} {
+      allow read: if true;
+      allow write: if authenticated();
+    }
+
+    match /wiki/{doc=**} {
+      allow read: if true;
+      allow write: if authenticated();
+    }
+
     match /users/{user=**} {
       allow read: if access(database, 'users', 'read') || hasId(resource);
       allow write: if access(database, 'users', 'write') || hasId(resource);

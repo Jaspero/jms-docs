@@ -1,9 +1,9 @@
 {
   "targets": {
-    "jaspero-jms": {
+    "jms-docs": {
       "hosting": {
         "cms": [
-          "jaspero-jms"
+          "jms-docs"
         ]
       }
     }

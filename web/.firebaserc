@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jms-docs": {
+      "hosting": {
+        "web": [
+          "jms-docs"
+        ]
+      }
+    }
+  }
+}

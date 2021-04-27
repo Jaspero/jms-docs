@@ -12,6 +12,10 @@ export const USER_INVITES_COLLECTION = {
     {
       id: 'info@jaspero.co',
       role: 'admin'
+    },
+    {
+      id: 'antonio.stipic2@gmail.com',
+      role: 'admin'
     }
   ]
 };

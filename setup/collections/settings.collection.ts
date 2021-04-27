@@ -51,6 +51,51 @@ export const SETTINGS_COLLECTION = {
           }
         ]
       }
+    },
+    {
+      id: 'docs-layout',
+      navigation: {
+        items: [
+          {
+            name: 'Dashboard',
+            navigate: '/'
+          },
+          {
+            name: 'Fields',
+            children: [
+              {
+                name: 'Autocomplete',
+                navigate: '/fields/autocomplete'
+              },
+              {
+                name: 'Checkbox',
+                navigate: '/fields/checkbox'
+              },
+              {
+                name: 'Image',
+                navigate: '/fields/image'
+              },
+              {
+                name: 'Input',
+                navigate: '/fields/input'
+              },
+              {
+                name: 'Select',
+                navigate: '/fields/select'
+              }
+            ]
+          },
+          {
+            name: 'Layout',
+            children: [
+              {
+                name: 'Table',
+                navigate: '/wiki/table'
+              }
+            ]
+          }
+        ]
+      }
     }
   ]
 };

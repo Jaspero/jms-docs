@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start:cms": "npm --prefix client run start:cms",
+    "start:web": "npm --prefix web run start",
     "start:functions": "npm --prefix functions run serve",
     "start:setup": "npm --prefix setup start",
     "start:setup:prod": "npm --prefix setup run start:prod",
@@ -36,7 +37,7 @@
   "bugs": {
     "url": "https://github.com/jaspero/jms/issues"
   },
-  "homepage": "https://jaspero-jms.firebaseapp.com",
+  "homepage": "https://jms-docs.firebaseapp.com",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
