@@ -9,6 +9,7 @@
     "start:setup": "npm --prefix setup start",
     "start:setup:prod": "npm --prefix setup run start:prod",
     "build:cms": "npm --prefix client run build",
+    "build:web": "npm --prefix web run build",
     "build:functions": "npm --prefix functions run build",
     "build": "npm run build:cms && npm run build:functions",
     "lint:client": "npm --prefix client run lint",

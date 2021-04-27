@@ -3,6 +3,9 @@
     "jms-docs": {
       "hosting": {
         "cms": [
+          "cms-jms-docs"
+        ],
+        "web": [
           "jms-docs"
         ]
       }
