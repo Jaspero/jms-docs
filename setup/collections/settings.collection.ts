@@ -104,6 +104,10 @@ export const SETTINGS_COLLECTION = {
               {
                 name: 'Select',
                 navigate: '/fields/select'
+              },
+              {
+                name: 'Radio',
+                navigate: '/fields/radio'
               }
             ]
           },
