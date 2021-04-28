@@ -4,7 +4,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilderComponent, FormBuilderData} from '@jaspero/form-builder';
 import {BehaviorSubject, combineLatest, Observable, of} from 'rxjs';
-import {map, pluck, switchMap, tap} from 'rxjs/operators';
+import {map, pluck, startWith, switchMap, tap} from 'rxjs/operators';
 import Academy from '@jaspero/academy';
 
 interface FieldData {
@@ -39,7 +39,9 @@ export class FieldComponent implements OnInit {
   @ViewChild('fb')
   formBuilder: FormBuilderComponent;
 
-  update$ = new BehaviorSubject(true);
+  update$ = new BehaviorSubject<string>(null);
+
+  fieldId = null;
 
   ngOnInit(): void {
     this.field$ = this.route.params.pipe(
@@ -54,28 +56,32 @@ export class FieldComponent implements OnInit {
                 this.router.navigate(['/fields']);
               }
 
+              this.fieldId = null;
+
               return {
                 id,
                 ...snap.data()
               };
             }),
-            switchMap(field => {
+            switchMap(fieldData => {
               return this.afs
-                .doc<InterfaceData>(`interfaces/${field.interface}`)
+                .doc<InterfaceData>(`interfaces/${fieldData.interface}`)
                 .get()
                 .pipe(
                   map(snap => {
                     return {
-                      ...field,
+                      ...fieldData,
                       interface: snap.data()?.code || ''
                     };
                   }),
                   switchMap(field => {
-                    return combineLatest([of(field), this.update$]).pipe(
-                      map(([field]) => {
+                    this.update$.next(field.template);
+                    return combineLatest([this.update$]).pipe(
+                      map(([template]) => {
+                        console.log({template});
+
                         const search = 'const data: FormBuilderData = ';
-                        const value =
-                          this.academy?.editor?.value || field.template || `{}`;
+                        const value = template || `{}`;
 
                         const code = value.slice(
                           value.indexOf(search) + search.length
@@ -139,7 +145,13 @@ export class FieldComponent implements OnInit {
       }),
       tap(field => {
         setTimeout(() => {
-          if (!this.academy) {
+          if (!this.fieldId) {
+            if (this.academy) {
+              this.academy.clearSteps();
+            }
+
+            this.fieldId = field.id;
+
             this.academy = new Academy({
               mount: [
                 {
@@ -177,7 +189,9 @@ export class FieldComponent implements OnInit {
             });
 
             this.academy.nextStep(0);
-            this.compile();
+            setTimeout(() => {
+              this.compile();
+            }, 1000);
           }
         });
       })
@@ -207,6 +221,8 @@ export class FieldComponent implements OnInit {
   }
 
   compile() {
-    this.update$.next(true);
+    if (this.academy?.editor?.value) {
+      this.update$.next(this.academy?.editor?.value);
+    }
   }
 }

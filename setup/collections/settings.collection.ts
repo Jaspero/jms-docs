@@ -79,6 +79,10 @@ export const SETTINGS_COLLECTION = {
             navigate: '/'
           },
           {
+            name: 'Modules',
+            navigate: '/wiki/modules'
+          },
+          {
             name: 'Fields',
             children: [
               {
