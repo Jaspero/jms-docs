@@ -94,6 +94,14 @@ export const SETTINGS_COLLECTION = {
                 navigate: '/fields/checkbox'
               },
               {
+                name: 'Chips',
+                navigate: '/fields/chips'
+              },
+              {
+                name: 'Date',
+                navigate: '/fields/date'
+              },
+              {
                 name: 'Image',
                 navigate: '/fields/image'
               },
@@ -104,6 +112,10 @@ export const SETTINGS_COLLECTION = {
               {
                 name: 'Select',
                 navigate: '/fields/select'
+              },
+              {
+                name: 'Slider',
+                navigate: '/fields/slider'
               },
               {
                 name: 'Radio',
