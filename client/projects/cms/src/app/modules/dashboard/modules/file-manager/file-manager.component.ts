@@ -28,7 +28,8 @@ export class FileManagerComponent implements OnInit, OnDestroy {
   constructor(
     private dialog: MatDialog,
     private fb: FormBuilder
-  ) {}
+  ) {
+  }
 
   @ViewChild('file')
   fileElement: ElementRef<HTMLInputElement>;
@@ -110,7 +111,8 @@ export class FileManagerComponent implements OnInit, OnDestroy {
                   const fn = safeEval(filter.value);
 
                   return fn(file);
-                } catch(error) {}
+                } catch (error) {
+                }
               });
             });
           }),
