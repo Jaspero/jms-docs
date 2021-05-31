@@ -4,12 +4,6 @@
   </button>
   <span>Docs</span>
   <span class="flex-1"></span>
-  <button mat-icon-button>
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>share</mat-icon>
-  </button>
 </mat-toolbar>
 
 <mat-drawer-container class="container">
@@ -17,7 +11,7 @@
 
     <mat-tree [dataSource]="sidebar$ | async" [treeControl]="tc">
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-        <a [routerLink]="node.navigate" class="pointer w-full">
+        <a [routerLink]="node.navigate" class="pointer w-full" [class.active]="router.url === node.navigate">
           <li>
             <div>
               <button mat-icon-button disabled>

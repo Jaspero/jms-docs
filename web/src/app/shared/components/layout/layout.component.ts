@@ -1,13 +1,14 @@
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { combineLatest, Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { StateService } from '../../services/state/state.service';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {Component, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Router} from '@angular/router';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {StateService} from '../../services/state/state.service';
 
 interface TestData {
   name: string;
-  // level: number;
+  navigate: string;
   children?: TestData[];
 }
 
@@ -22,6 +23,7 @@ const TC = new NestedTreeControl(GetChildren);
 export class LayoutComponent implements OnInit {
 
   constructor(
+    public router: Router,
     public state: StateService,
     private afs: AngularFirestore
   ) {
@@ -44,5 +46,4 @@ export class LayoutComponent implements OnInit {
   hasChild(_: number, node: TestData) {
     return node.children != null && node.children.length > 0;
   }
-
 }

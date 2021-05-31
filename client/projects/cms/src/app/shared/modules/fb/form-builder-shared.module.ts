@@ -5,7 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MonacoEditorModule} from '@jaspero/fb-monaco-editor';
 import {
-  CUSTOM_COMPONENTS,
+  CUSTOM_COMPONENTS, CUSTOM_FIELDS,
   DbService as FDbService,
   FormBuilderModule,
   ROLE,
@@ -61,6 +61,10 @@ export function roleFactory(state: StateService) {
       useValue: {
         duplicate: DuplicateComponent
       }
+    },
+    {
+      provide: CUSTOM_FIELDS,
+      useValue: {}
     }
   ],
   declarations: [DuplicateComponent]

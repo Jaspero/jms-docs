@@ -127,8 +127,16 @@ export const SETTINGS_COLLECTION = {
             name: 'Layout',
             children: [
               {
+                name: 'General',
+                navigate: '/wiki/layout'
+              },
+              {
                 name: 'Table',
                 navigate: '/wiki/table'
+              },
+              {
+                name: 'Single Instance',
+                navigate: '/wiki/single-instance'
               }
             ]
           }
