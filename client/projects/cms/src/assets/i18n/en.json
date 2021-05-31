@@ -86,6 +86,7 @@
     "MANAGEMENT": "Management",
     "SYSTEM": "System",
     "RESET_PASSWORD": "Please reset your password",
+    "FILE_MANAGER": "File Manager",
     "FIELDS": "Fields",
     "INTERFACES": "Interfaces",
     "WIKI": "Wiki"
@@ -129,7 +130,9 @@
       "PREVIEW": "Image preview"
     },
     "FILE": {
-      "EMPTY": "No file selected"
+      "EMPTY": "No file selected",
+      "ADD": "Add File",
+      "URL": "File URL"
     },
     "GALLERY": {
       "ENTER_URL": "Enter URL",
@@ -217,5 +220,11 @@
   },
   "ERRORS": {
     "DASHBOARD_ACCESS": "You don't have access to the dashboard."
+  },
+  "FILE_MANAGER": {
+    "DELETE_FILE": {
+      "DESCRIPTION": "File '{{name}}' will be deleted!",
+      "CONFIRM": "Delete"
+    }
   }
 }

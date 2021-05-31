@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "11.2.7",
     "@angular/router": "11.2.7",
     "@jaspero/fb-monaco-editor": "^1.0.10",
-    "@jaspero/form-builder": "3.22.1",
+    "@jaspero/form-builder": "3.28.3",
     "@jaspero/jmsp-notes": "1.1.0",
     "@jaspero/ng-helpers": "4.3.0",
     "@monaco-editor/loader": "^1.0.1",
