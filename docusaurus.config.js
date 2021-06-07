@@ -2,7 +2,7 @@
 module.exports = {
   title: 'JMS',
   tagline: 'Content Management System',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.jaspero.co',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
