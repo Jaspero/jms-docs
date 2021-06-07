@@ -1,85 +1,39 @@
 {
-  "name": "@jaspero/jms",
-  "version": "3.46.1",
-  "license": "MIT",
+  "name": "jms-docs",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start:cms": "npm --prefix client run start:cms",
-    "start:web": "npm --prefix web run start",
-    "start:functions": "npm --prefix functions run serve",
-    "start:setup": "npm --prefix setup start",
-    "start:setup:prod": "npm --prefix setup run start:prod",
-    "build:cms": "npm --prefix client run build",
-    "build:web": "npm --prefix web run build",
-    "build:functions": "npm --prefix functions run build",
-    "build": "npm run build:cms && npm run build:functions",
-    "lint:client": "npm --prefix client run lint",
-    "lint:functions": "npm --prefix functions run lint",
-    "lint": "npm run lint:client && npm run lint:functions",
-    "firebase": "firebase",
-    "deploy": "firebase deploy --only storage,firestore,functions:cms,hosting",
-    "semantic-release": "semantic-release",
-    "config:set": "firebase functions:config:set"
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
   },
-  "author": {
-    "name": "Jaspero Ltd",
-    "email": "info@jaspero.co"
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-beta.0",
+    "@docusaurus/preset-classic": "2.0.0-beta.0",
+    "@mdx-js/react": "^1.6.21",
+    "@svgr/webpack": "^5.5.0",
+    "clsx": "^1.1.1",
+    "file-loader": "^6.2.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "url-loader": "^4.1.1"
   },
-  "keywords": [
-    "cms",
-    "JSON",
-    "JSON schema",
-    "firebase",
-    "angular"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jaspero/jms"
-  },
-  "bugs": {
-    "url": "https://github.com/jaspero/jms/issues"
-  },
-  "homepage": "https://jms-docs.firebaseapp.com",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-commit": "git update-index -g"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,json,md}": [
-      "prettier --write",
-      "git add"
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
     ],
-    "client/**/*.{ts}": [
-      "npm run lint:client",
-      "git add"
-    ],
-    "functions/**/*.{ts}": [
-      "npm run lint:functions",
-      "git add"
-    ]
-  },
-  "devDependencies": {
-    "@semantic-release/changelog": "5.0.1",
-    "@semantic-release/git": "9.0.0",
-    "@semantic-release/npm": "7.0.6",
-    "husky": "4.3.0",
-    "lint-staged": "10.4.0",
-    "prettier": "2.1.2",
-    "semantic-release": "17.2.3"
-  },
-  "release": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      "@semantic-release/git"
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }

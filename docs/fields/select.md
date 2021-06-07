@@ -1,0 +1,67 @@
+---
+sidebar_position: 3
+---
+
+# Select
+
+## Interface
+
+```typescript
+interface SelectData extends FieldData {
+  dataSet?: Option[];
+  multiple?: boolean;
+  populate?: Populate;
+  autocomplete?: string;
+  reset?: boolean;
+  resetIcon?: string;
+}
+```
+
+<a href="/docs/types/option">Option</a>
+<br /><br />
+
+```typescript
+interface Populate {
+  collection?: string;
+  subcollection?: string;
+  nameKey?: string;
+  valueKey?: string;
+  orderBy?: string;
+
+  /**
+   * A method for mapping all of the results
+   * (items: T[]) => any[]
+   */
+  mapResults?: string;
+
+  /**
+   * If a filter is a string
+   * it represents the id of the document
+   */
+  filter?: WhereFilter | string;
+
+  /**
+   * A stringified function that receives
+   * an object with {fieldData: SelectData, value: form.getRawValue(), role: string, additionalContext?: any}
+   * and should return a WhereFilter.
+   * This doesn't work in combination with the dependency property
+   */
+  dynamicFilter?: string;
+
+  /**
+   * Use this property if the field depends on changes
+   * of a different field in the form
+   */
+  dependency?: {
+    key: string;
+
+    /**
+     * A method for defining query dynamically
+     * (value) => {collection: string; orderBy: string; filter: WhereFilter | string}
+     */
+    method: string;
+  };
+}
+```
+
+<a href="/docs/types/where-filter">WhereFilter</a>

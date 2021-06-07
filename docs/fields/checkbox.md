@@ -1,0 +1,9 @@
+---
+sidebar_position: 7
+---
+
+# Checkbox
+
+## Interface
+
+Checkbox uses only default <a href="/docs/types/field-data">FieldData</a> interface.

@@ -1,7 +1,0 @@
-<section class="p-a-m flex jc-center">
-  <div class="container p-a-xs markdown">
-    <ng-container *ngIf="wiki$ | async as wiki">
-      <div [innerHTML]="wiki.content | jpSanitize"></div>
-    </ng-container>
-  </div>
-</section>
