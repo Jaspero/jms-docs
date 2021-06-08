@@ -64,11 +64,11 @@ import {TranslocoRootModule} from './transloco/transloco-root.module';
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {
-        appearance: 'outline'
+        appearance: 'fill'
       }
     }
   ],
-  bootstrap: [AppComponent],
+  // bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule implements DoBootstrap {
