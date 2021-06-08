@@ -1,0 +1,63 @@
+---
+sidebar_position: 8
+---
+
+# Autocomplete
+
+## Interface
+
+```typescript
+interface AutocompleteData extends FieldData {
+  dataSet: Array<{name: string; value: any}>;
+  populate?: {
+    collection: string;
+    nameKey: string;
+    valueKey?: string;
+    orderBy?: string;
+    filter?: WhereFilter;
+    limit?: number;
+  };
+  autocomplete?: string;
+  suffix?: HSD | string;
+  prefix?: HSD | string;
+}
+```
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      city: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    city: {
+      label: 'City',
+      component: {
+        type: 'autocomplete',
+        configuration: {
+          dataSet: [
+            {
+              name: 'Osijek',
+              value: 'Osijek'
+            },
+            {
+              name: 'Zagreb',
+              value: 'Zagreb'
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>
+
+<a href="/docs/types/field-data">FieldData</a>&emsp;
+<a href="/docs/types/where-filter">WhereFilter</a>&emsp;
+<a href="/docs/types/hsd">HSD</a>&emsp;

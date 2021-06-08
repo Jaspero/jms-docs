@@ -88,4 +88,5 @@ module.exports = {
       },
     ],
   ],
+  plugins: ['docusaurus-plugin-sass']
 };

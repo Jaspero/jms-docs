@@ -1,0 +1,5 @@
+<div #editor class="editor-container">
+  <button mat-raised-button class="compile" color="primary" (click)="compile()">Run</button>
+</div>
+
+<fb-form-builder [data]="data$ | async" #fb></fb-form-builder>
