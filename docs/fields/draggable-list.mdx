@@ -1,0 +1,91 @@
+---
+sidebar_position: 12
+---
+
+# DraggableList
+
+## Interface
+
+```typescript
+interface DragData extends FieldData {
+  toggle?: boolean;
+  options: DragOptions[];
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>
+
+<br /><br />
+
+```typescript
+interface DragOptions extends Option {
+  active?: boolean;
+}
+```
+
+<a href="/docs/types/option">Option</a>
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      movies: {
+        type: 'array'
+      }
+    }
+  },
+  definitions: {
+    movies: {
+      label: 'Movies',
+      component: {
+        type: 'draggable',
+        configuration: {
+          options: [
+            {
+              name: 'Episode IV – A New Hope',
+              value: 'iv'
+            },
+            {
+              name: 'Episode V – The Empire Strikes Back',
+              value: 'v'
+            },
+            {
+              name: 'Episode VI – Return of the Jedi',
+              value: 'vi'
+            },
+            {
+              name: 'Episode I – The Phantom Menace',
+              value: 'i'
+            },
+            {
+              name: 'Episode II – Attack of the Clones',
+              value: 'ii'
+            },
+            {
+              name: 'Episode III – Revenge of the Sith',
+              value: 'iii'
+            },
+            {
+              name: 'Episode VII – The Force Awakens',
+              value: 'vii'
+            },
+            {
+              name: 'Episode VIII – The Last Jedi',
+              value: 'viii'
+            },
+            {
+              name: 'Episode IX – The Rise of Skywalker',
+              value: 'ix'
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>

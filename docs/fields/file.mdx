@@ -1,0 +1,65 @@
+---
+sidebar_position: 4
+---
+
+# File
+
+## Interface
+
+```typescript
+interface FileData extends FieldData {
+  emptyLabel?: string;
+  preventClear?: boolean;
+  /**
+  * MIME type Array
+  */
+  allowedFileTypes?: string[];
+  forbiddenFileTypes?: string[];
+
+  /**
+  * Size in bytes (number) or
+  * string containing unit of measurement
+  * 10MB, 150KB, ...
+  */
+  minSize?: string | number;
+  maxSize?: string | number;
+  /**
+   * Overwrite existing file if already exists
+   */
+  preserveFileName?: boolean;
+  uploadMethods?: UploadMethod[];
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>&emsp;
+<a href="/docs/types/upload-method">UploadMethod</a>&emsp;
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      essay: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    essay: {
+      label: 'College Essay',
+      component: {
+        type: 'file',
+        configuration: {
+          allowedFileTypes: ['application/pdf']
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>
+
+

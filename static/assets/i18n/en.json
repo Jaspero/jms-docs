@@ -1,1 +1,36 @@
-{}
+{
+  "GENERAL": {
+    "DISMISS": "Dismiss",
+    "CANCEL": "Cancel"
+  },
+  "FIELDS": {
+    "IMAGE": {
+      "PREVIEW": "Image preview"
+    },
+    "FILE": {
+      "EMPTY": "No file selected",
+      "INVALID_FILE_FORMAT": "Invalid file format uploaded",
+      "URL": "URL",
+      "ADD": "Add"
+    },
+    "GALLERY": {
+      "ENTER_URL": "Enter URL",
+      "CHOOSE_FILES": "Choose files",
+      "SORT_IMAGES": "Sort images",
+      "IMAGE_URL": "Image URL",
+      "ADD_IMAGE": "Add image",
+      "UPLOAD_ERROR": "Error on uploading image."
+    },
+    "WYSIWYG": {
+      "EMBED_YOUTUBE": "Embed YouTube",
+      "VIDEO_ID": "Video ID",
+      "FULL_WIDTH": "Full Width",
+      "SHOW_PLAYER_CONTROLS": "Show Player Controls",
+      "PRIVACY_ENHANCED_MODE": "Privacy Enhanced Mode",
+      "ALIGNMENT": "Alignment",
+      "LEFT": "Left",
+      "CENTER": "Center",
+      "RIGHT": "Right"
+    }
+  }
+}

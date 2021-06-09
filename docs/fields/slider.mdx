@@ -1,0 +1,50 @@
+---
+sidebar_position: 11
+---
+
+# Slider
+
+## Interface
+
+```typescript
+interface SliderData extends FieldData {
+  validation: {
+    minimum: number;
+    maximum: number;
+  };
+  thumbLabel: boolean;
+  tickInterval: number;
+  starAt: number;
+  endAt: number;
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      volume: {
+        type: 'number'
+      }
+    }
+  },
+  definitions: {
+    volume: {
+      label: 'Volume',
+      component: {
+        type: 'slider',
+        configuration: {
+          thumbLabel: true
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>

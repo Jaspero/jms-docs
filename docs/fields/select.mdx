@@ -65,3 +65,46 @@ interface Populate {
 ```
 
 <a href="/docs/types/where-filter">WhereFilter</a>
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      role: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    role: {
+      label: 'Role',
+      component: {
+        type: 'select',
+        configuration: {
+          dataSet: [
+            {
+              name: 'Admin',
+              value: 'admin'
+            },
+            {
+              name: 'Editor',
+              value: 'editor'
+            },
+            {
+              name: 'User',
+              value: 'user'
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>
+
+

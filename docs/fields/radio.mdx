@@ -1,0 +1,57 @@
+---
+sidebar_position: 13
+---
+
+# Radio
+
+## Interface
+
+```typescript
+interface RadioData extends FieldData {
+  options: Option[];
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>&emsp;
+<a href="/docs/types/option">Option</a>&emsp;
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      color: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    color: {
+      label: 'Color',
+      component: {
+        type: 'radio',
+        configuration: {
+          options: [
+            {
+              name: 'Red',
+              value: 'red'
+            },
+            {
+              name: 'Green',
+              value: 'green'
+            },
+            {
+              name: 'Blue',
+              value: 'blue'
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>

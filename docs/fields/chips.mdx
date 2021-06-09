@@ -1,0 +1,51 @@
+---
+sidebar_position: 14
+---
+
+# Chips
+
+## Interface
+
+```typescript
+interface ChipsData extends FieldData {
+  selectable: boolean;
+  removable: boolean;
+  addOnBlur: boolean;
+  unique: boolean;
+  autocomplete?: string;
+  suffix?: HSD | string;
+  prefix?: HSD | string;
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>&emsp;
+<a href="/docs/types/hsd">HSD</a>&emsp;
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      email: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    recipients: {
+      label: 'Recipients',
+      component: {
+        type: 'chips',
+        configuration: {
+          autocomplete: 'email'
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>
+

@@ -12,8 +12,17 @@ interface ImageData extends FieldData {
   preventUrlUpload?: boolean;
   preventStorageUpload?: boolean;
   generatedImages?: GeneratedImage[];
+  /**
+   * MIME type Array
+   */
   allowedImageTypes?: string[];
   forbiddenImageTypes?: string[];
+
+  /**
+   * Size in bytes (number) or
+   * string containing unit of measurement
+   * 10MB, 150KB, ...
+   */
   minSize?: string | number;
   maxSize?: string | number;
   /**
@@ -27,3 +36,31 @@ interface ImageData extends FieldData {
 <a href="/docs/types/field-data">FieldData</a>&emsp;
 <a href="/docs/types/generated-image">GeneratedImage</a>&emsp;
 <a href="/docs/types/upload-method">UploadMethod</a>&emsp;
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      profile: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    profile: {
+      label: 'Profile Photo',
+      component: {
+        type: 'image',
+        configuration: {
+          preventStorageUpload: true
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>

@@ -24,3 +24,32 @@ interface GalleryData extends FieldData {
 
 <a href="/docs/types/field-data">FieldData</a>&emsp;
 <a href="/docs/types/generated-image">GeneratedImage</a>&emsp;
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      slideshow: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    slideshow: {
+      label: 'Slideshow',
+      component: {
+        type: 'gallery',
+        configuration: {
+          allowUrl: true,
+          allowServerUpload: true
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>

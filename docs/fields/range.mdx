@@ -1,0 +1,62 @@
+---
+sidebar_position: 10
+---
+
+# Range
+
+## Interface
+
+```typescript
+interface RangeData extends FieldData {
+  min?: number;
+  max?: number;
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      review: {
+        type: 'object',
+        properties: {
+          start: {
+            type: 'number'
+          },
+          end: {
+            type: 'number'
+          }
+        }
+      }
+    }
+  },
+  definitions: {
+    review: {
+      label: 'Review',
+      component: {
+        type: 'range',
+        configuration: {
+          min: 0,
+          max: 3246373660816
+        }
+      }
+    }
+  },
+  layout: {
+    instance: {
+      segments: [
+        {
+          fields: ['/review']
+        }
+      ]
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>

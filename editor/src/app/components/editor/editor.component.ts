@@ -107,7 +107,8 @@ export class EditorComponent implements AfterViewInit {
         this.updateOptions({
           tabSize: 2
         });
-      });
+        this.compile();
+      }, 100);
 
       // setTimeout(() => {
       //   const compile = this.renderer.createElement('button');
@@ -138,8 +139,6 @@ export class EditorComponent implements AfterViewInit {
   compile() {
     const code = (this.monacoEditor?.getValue().replace('const data = ', '') || '{}').trim();
 
-    console.log(code);
-
     let data: Partial<FormBuilderData & {layout: any}> = {
       value: {},
       schema: {},
@@ -154,8 +153,6 @@ export class EditorComponent implements AfterViewInit {
         ...data,
         ...compile()
       };
-
-      console.log({data});
 
       if (data?.layout?.instance?.segments) {
         data.segments = data.layout.instance.segments;
@@ -181,14 +178,25 @@ export class EditorComponent implements AfterViewInit {
         value: {}
       } : data as FormBuilderData
     );
+  }
 
-    // return {
-    //   ...field,
-    //   fb: (validate && validate.error) ?
-    //     {
-    //       schema: {},
-    //       value: {}
-    //     } : data as FormBuilderData
-    // };
+  reset() {
+    this.monacoEditor.setValue(
+      this.code || `const data = {
+  schema: {
+    properties: {
+      name: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    name: {
+      label: 'Name'
+    }
+  }
+}`);
+
+    this.compile();
   }
 }

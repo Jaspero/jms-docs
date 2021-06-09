@@ -1,0 +1,49 @@
+---
+sidebar_position: 15
+---
+
+# Textarea
+
+## Interface
+
+```typescript
+interface TextareaData extends FieldData {
+  rows?: number;
+  cols?: number;
+  autocomplete?: string;
+  suffix?: HSD | string;
+  prefix?: HSD | string;
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>&emsp;
+<a href="/docs/types/hsd">HSD</a>&emsp;
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      review: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    review: {
+      label: 'Review',
+      component: {
+        type: 'textarea',
+        configuration: {
+          autocomplete: 'off',
+          row: 20
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>

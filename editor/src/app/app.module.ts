@@ -12,6 +12,7 @@ import {
   STORAGE_URL,
   StorageService
 } from '@jaspero/form-builder';
+import {environment} from '../environments/environment';
 
 import {AppComponent} from './app.component';
 import {EditorComponent} from './components/editor/editor.component';
@@ -68,7 +69,11 @@ import {TranslocoRootModule} from './transloco/transloco-root.module';
       }
     }
   ],
-  // bootstrap: [AppComponent],
+  bootstrap: [
+    ...environment.production
+      ? []
+      : [AppComponent]
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule implements DoBootstrap {
