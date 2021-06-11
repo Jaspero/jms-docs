@@ -1,0 +1,104 @@
+---
+sidebar_position: 16
+---
+
+# Ref
+
+## Interface
+
+```typescript
+interface RefData extends FieldData {
+  /**
+   * Collection to query for search
+   */
+  collection: string;
+  /**
+   * Save value of provided key to database
+   */
+  valueKey?: string;
+  /**
+   * Set to provided value on 'Clear' action
+   */
+  clearValue?: string | null;
+  /**
+   * Max number of rows to show per search
+   */
+  limit?: number;
+  /**
+   * Search key for querying database
+   * Label for showing next to 'Search by...'
+   */
+  search?: {
+    key?: string;
+    label?: string;
+  };
+  /**
+   * Display provided key to user and its label
+   */
+  display: {
+    key?: string;
+    label?: string;
+  };
+  /**
+   * Table columns for displaying search table
+   */
+  table?: {
+    tableColumns?: {
+      key: string;
+      label: string;
+    }[];
+  }
+}
+```
+
+<a href="/docs/types/field-data">FieldData</a>&emsp;
+
+## Demo
+
+import "../../src/import-editor.js";
+
+export const code = `const data = {
+  schema: {
+    properties: {
+      role: {
+        type: 'string'
+      }
+    }
+  },
+  definitions: {
+    role: {
+      label: 'Role',
+      component: {
+        type: 'ref',
+        configuration: {
+          collection: 'roles',
+          valueKey: 'id',
+          clearValue: null,
+          searchBy: {
+            key: '/name',
+            label: 'Name'
+          },
+          display: {
+            key: '/name',
+            label: 'Name'
+          },
+          table: {
+            tableColumns: [
+              {
+                key: '/id',
+                label: 'ID'
+              },
+              {
+                key: '/name',
+                label: 'Name'
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+<jms-editor code={code}></jms-editor>
