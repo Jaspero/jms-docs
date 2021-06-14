@@ -76,8 +76,8 @@ module.exports = {
       disableSwitch: false,
       respectPrefersColorScheme: false,
       switchConfig: {
-        darkIcon: '',
-        lightIcon: ''
+        darkIcon: ' ',
+        lightIcon: ' '
       }
     },
   },
