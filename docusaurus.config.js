@@ -71,6 +71,15 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Jaspero`,
     },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
+      switchConfig: {
+        darkIcon: '',
+        lightIcon: ''
+      }
+    },
   },
   presets: [
     [
