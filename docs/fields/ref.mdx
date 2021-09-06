@@ -66,10 +66,23 @@ interface RefData extends FieldData {
       label: string;
     }[];
   }
+
+  /**
+   * Additional Filters for provided collection
+   * @default []
+   */
+  filters?: WhereFilter[];
+
+  /**
+   * Close search dialog after selecting item
+   * @default true
+   */
+   closeOnSelect?: boolean;
 }
 ```
 
 <a href="/docs/types/field-data">FieldData</a>&emsp;
+<a href="/docs/types/where-filter">WhereFilter</a>&emsp;
 
 ## Demo
 
