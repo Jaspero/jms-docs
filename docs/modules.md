@@ -6,6 +6,7 @@ sidebar_position: 2
 
 A module represents a <a href="https://firebase.google.com/docs/firestore/data-model#collections" target="_blank">collection</a> in the database.
 
+
 It consists of three configurations:
 - <a href="/docs/schema">Schema</a>
 - <a href="/docs/layout">Layout</a>
